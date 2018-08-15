@@ -1,0 +1,122 @@
+find /home/Desktop/ -name "*.pdf" -exec {} rm -rf  \;
+{}-->"On all the results of FIND"
+
+? Use "?" for reverse search in MAN pages
+/ Use "/" for forward or downward search in MAN pages
+
+
+find / -size +500M -exec cp -r {} ~/Desktop \;
+
+ 
+
+To check disk;
+du -sh
+gdisk -l /dev/sda
+
+Edit /etc/sudoers to allow users to run with root priviledges
+
+echo >> filename--> use to append data
+echo > filename-->overwrite data
+
+
+cd /folderName/; pwd
+; --> used for compiling command and execute both commands.
+
+
+ls -lh output
+d is folder
+- is  file
+- rwx(for user) -rwx(for group) -r(for anyone in the system) --
+
+if - that means the permission is not set
+
+changing Permissions
+chmod u-w(write) or u-x(execute) or u-r(read) /FolderName to remove write permission!
+
+chmod u+wrx /FolderName--> To give permisssions.
+
+
+Ownerships;
+ls -ld * list all 
+
+chmod u =rwx,g=rx,o=r /FolderName
+chown root(User):root(Group) /FolderName
+
+Octal Permissions;
+r is (4) w is (2) x is (1) 0 for no permissions
+
+SoftLinks;
+ln -s /FolderName LinkName
+file LinkName
+
+ln -s /FolderName LinkName
+
+cd LinkName 
+
+pwd -P
+remove symbolic links and show all content.
+
+Hardlinks-cannot be created for directories,
+Deleting a target file for a symbolic link makes that link useless, In hardlinks-- Any changes to the data on the inode is reflected in all files that refer to that inode.
+
+A Soft Link
+can cross the file system,
+allows you to link between directories,
+has different inodes number and file permissions than original file,
+permissions will not be updated,
+has only the path of the original file, not the contents.
+A hard Link
+
+can’t cross the file system boundaries,
+can’t link directories,
+has the same inodes number and permissions of original file,
+permissions will be updated if we change the permissions of source file,
+has the actual contents of original file, so that you still can view the contents, even if the original file moved or removed.
+
+
+ls -i to check inodes number
+
+
+
+Pipes "|";
+ps -e To list process
+ps -e | awk '{print $4}' | sort -f | cat -n >  FileName
+
+
+'{print $4}'--> Print the 4th column in ps -e command.
+
+To read a long document use "less -N /FileName"
+
+To search use forward /
+
+? To search backward
+
+head print first 10 liness
+head -20n /Filename
+
+tail last 10 lines
+tail -n4 /FileName | cat -9--> Last 4 lines
+
+tail -f /FileName
+List recent enteries
+
+
+tail -f /var/log/audit/audit.log-Security log file
+run something and check in logs for;
+
+type=USER_AUTH Type of the error
+op=PAM:authentication grantors=? The module that was run
+acct="root" The account that was breached
+addr=?
+terminal=pts/1 Originating terminal
+res=failed Result of the attempt
+uid=1000 ID of the command
+exe="/usr/bin/su" Absolute path of the command that was run
+hostname=localhost.localdomain Full wualified name of the computer.
+
+grep 1000 /etc/passwd
+
+grep -i user_auth /var/log/audit/audit/log | grep res=failed |  wc -l
+
+wc -l shows wrong attempts to login
+ 
